@@ -13,9 +13,10 @@ import org.springframework.stereotype.Repository;
 public interface BloodBankRepository extends JpaRepository<UserModel, Long> {
     UserModel findByUserName(String userName);
 
+    //this native query is for checking exiting user in db
     @Query(value = "SELECT * FROM user_model WHERE user_Name=:userName", nativeQuery = true)
-        //this native query is for checking exiting user in db
     UserModel checkForUserExist(String userName);
 
+//    UserModel findByAgent(String agent);
 }
 

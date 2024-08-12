@@ -15,23 +15,6 @@ public class UserModel {
     private String role;
     private Date dob;
     private float commission;
-
-    public float getCommission() {
-        return commission;
-    }
-
-    public void setCommission(float commission) {
-        this.commission = commission;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
     private String bloodGroup;
     private String address;
     private String password;
@@ -64,10 +47,21 @@ public class UserModel {
     public void setRole(String role) {
         this.role = role;
     }
+    public float getCommission() {
+        return commission;
+    }
 
+    public void setCommission(float commission) {
+        this.commission = commission;
+    }
 
+    public Date getDob() {
+        return dob;
+    }
 
-
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
 
     public String getBloodGroup() {
         return bloodGroup;

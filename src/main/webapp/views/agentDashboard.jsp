@@ -69,61 +69,73 @@
             cursor: pointer;
         }
 
-         .btn:hover {
-                    background-color: #0056b3;
-                }
+        .btn:hover {
+            background-color: #0056b3;
+        }
 
-                a {
-                    text-decoration: none;
-                    color: inherit;
-                }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-                a.signup-link {
-                    color: #007bff;
-                }
+        a.signup-link {
+            color: #007bff;
+        }
 
-                a.signup-link:hover {
-                    color: #0056b3;
-                }
-                .back-button {
-                                    margin-top: 20px;
-                                    width: 50px;
-                                    height: 50px;
-                                    border-radius: 50%;
-                                    background-color: #007bff;
-                                    color: white;
-                                    border: none;
-                                    font-size: 24px;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    cursor: pointer;
-                                }
-                                .back-button:hover {
-                                    background-color: #0056b3;
-                                }
-                                .back-button:focus {
-                                    outline: none;
-                                }
-                                .arrow {
-                                    display: inline-block;
-                                    transform: rotate(0deg);
-                        }
-                .logout-btn {
-                    margin-top: 20px;
-                    width: 100%;
-                    padding: 10px;
-                    border: none;
-                    border-radius: 5px;
-                    background-color: #dc3545;
-                    color: white;
-                    font-size: 16px;
-                    cursor: pointer;
-                }
+        a.signup-link:hover {
+            color: #0056b3;
+        }
 
-                .logout-btn:hover {
-                    background-color: #c82333;
-                }
+        .back-button {
+            margin-top: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button:focus {
+            outline: none;
+        }
+
+        .arrow {
+            display: inline-block;
+            transform: rotate(0deg);
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
 
     </style>
 </head>
@@ -132,10 +144,14 @@
         <h2>Welcome To Agent Dashboard</h2>
 
         <button class="back-button" onclick="goBack()">
-                                 <span class="arrow">&larr;</span>
-         </button>
-        <button><a href="/signup" class="signup-link" style=none>Create End User</a></button>
-        <button><a href="/allusers" class="signup-link" style=none>Users List</a></button>
+            <span class="arrow">&larr;</span>
+        </button>
+        <div class="button-container">
+            <button><a href="/signup" class="signup-link" style="none">Create End User</a></button>
+            <button><a href="/allusers" class="signup-link" style="none">Users List</a></button>
+            <button><a href="/requestlist" class="signup-link" style="none">Show Blood Request</a></button>
+            <button><a href="/coinreport" class="signup-link" style="none">Coin Report</a></button>
+        </div>
         <form action="register" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
@@ -161,13 +177,13 @@
                 <label for="dob">DOB</label>
                 ${dto.dob}
             </div>
-            <button class="logout-btn"><a href="/logout" class="signup-link" style=none>Logout</a></button>
+            <button class="logout-btn"><a href="/logout" class="signup-link" style="none">Logout</a></button>
         </form>
     </div>
     <script>
-          function goBack() {
-                 window.history.back();
-          }
+        function goBack() {
+            window.history.back();
+        }
     </script>
 </body>
 </html>

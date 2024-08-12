@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Page</title>
+    <title>Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +22,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 600px;
             text-align: center;
-            border:solid black 2px;
+            border: solid black 2px;
         }
 
         h2 {
@@ -72,54 +72,88 @@
         .btn:hover {
             background-color: #0056b3;
         }
-        .back-button {
-                            margin-top: 20px;
-                            width: 50px;
-                            height: 50px;
-                            border-radius: 50%;
-                            background-color: #007bff;
-                            color: white;
-                            border: none;
-                            font-size: 24px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            cursor: pointer;
-                        }
-                        .back-button:hover {
-                            background-color: #0056b3;
-                        }
-                        .back-button:focus {
-                            outline: none;
-                        }
-                        .arrow {
-                            display: inline-block;
-                            transform: rotate(0deg);
-                }
-        .logout-btn {
-                    margin-top: 20px;
-                    width: 100%;
-                    padding: 10px;
-                    border: none;
-                    border-radius: 5px;
-                    background-color: #dc3545;
-                    color: white;
-                    font-size: 16px;
-                    cursor: pointer;
-                }
 
-                .logout-btn:hover {
-                    background-color: #c82333;
-                }
+        .back-button {
+            margin-top: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button:focus {
+            outline: none;
+        }
+
+        .arrow {
+            display: inline-block;
+            transform: rotate(0deg);
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .blood-request-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            justify-content: space-between; /* Aligns the buttons with space between them */
+        }
+
+        .make-request-btn, .show-request-btn {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .make-request-btn:hover, .show-request-btn:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
     <div class="signup-container">
         <h2>Welcome to ${dto.userName} Dashboard</h2>
         <form action="register" method="post">
-            <button class="back-button" onclick="goBack()">
-                                     <span class="arrow">&larr;</span>
-                    </button>
+            <div class="blood-request-container">
+                <button class="back-button" onclick="goBack()">
+                    <span class="arrow">&larr;</span>
+                </button>
+                <button class="make-request-btn" type="button">
+                    <a href="/bloodrequest" style="text-decoration: none; color: white;">Make Blood Request</a>
+                </button>
+                <button class="show-request-btn" type="button">
+                    <a href="/requestlistByUser" style="text-decoration: none; color: white;">Show Blood Request</a>
+                </button>
+            </div>
             <div class="input-group">
                 <label for="username">Username</label>
                 ${dto.userName}
@@ -145,13 +179,15 @@
                 <label for="Date of Birth">DOB</label>
                 ${dto.dob}
             </div>
-            <button class="logout-btn"><a href="/logout" class="signup-link" style=none>Logout</a></button>
+            <button class="logout-btn">
+                <a href="/logout" class="signup-link" style="text-decoration: none; color: white;">Logout</a>
+            </button>
         </form>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
     </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

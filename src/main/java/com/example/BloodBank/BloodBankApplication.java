@@ -1,6 +1,8 @@
 package com.example.BloodBank;
 
+import com.example.BloodBank.dto.UserLoginDto;
 import com.example.BloodBank.service.AdminService;
+import com.example.BloodBank.service.BloodRequestService;
 import com.example.BloodBank.service.BloodStockService;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
@@ -15,11 +17,12 @@ public class BloodBankApplication {
 		AdminService admin = run.getBean(AdminService.class);
 //		AdminService admin = new AdminService(); //this will show error
 		admin.setAdmin();
-		System.out.println("Application Started");
 
 		BloodStockService bloodStockService = run.getBean((BloodStockService.class));
 		bloodStockService.setBloodStock();
 
+
+		System.out.println("Application Started");
 	}
 
 	//ModelMapper ki dependency inject krne ke baad bhi hme iska bean bnana hai. Here below I made bean by beanFactory method
@@ -27,5 +30,6 @@ public class BloodBankApplication {
 	public ModelMapper getModelMapperInstance(){
 		return new ModelMapper();
 	}
+
 
 }

@@ -1,9 +1,12 @@
 package com.example.BloodBank.model;
 
+import ch.qos.logback.core.util.CachingDateFormatter;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table
@@ -57,4 +60,6 @@ public  class BloodStockModel {
     public void setLastModifiedOn(LocalDateTime lastModifiedOn) {
         this.lastModifiedOn = lastModifiedOn;
     }
+
+
 }

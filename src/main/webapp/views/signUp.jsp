@@ -61,11 +61,11 @@
             border-color: #007bff;
         }
         select {
-             width: 100%;
-             padding: 10px;
-             border: 1px solid #ccc;
-             border-radius: 5px;
-             box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
         .btn {
             width: 100%;
@@ -86,62 +86,68 @@
 <body>
     <div class="signup-container">
         <h2>Sign Up</h2>
-        <form action="register" method="post">
-                <div class="input-group">
-                         <label for="username">Username</label>
-                        <input type="text" name="userName">
-                </div>
-                            <div class="input-group">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" required>
-                            </div>
-                            <div class="input-group">
-                                <label for="bloodGroup">Blood Group</label>
+        <form action="/register" method="post">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="userName">
+            </div>
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="bloodGroup">Blood Group</label>
+                <select id="bloodGroup" name="bloodGroup">
+                    <option value="">Select...</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="address">Address</label>
+                <input type="text" name="address" required>
+            </div>
+            <div class="input-group">
+                <label for="dob">DOB</label>
+                <input type="date" name="dob">
+            </div>
 
-                                <select id="bloodGroup" name="bloodGroup">
-                                        <option value="">Select...</option>
-                                        <option value="A+">A+</option>
-                                        <option value="A-">A-</option>
-                                        <option value="B+">B+</option>
-                                        <option value="B-">B-</option>
-                                        <option value="AB+">AB+</option>
-                                        <option value="AB-">AB-</option>
-                                        <option value="O+">O+</option>
-                                        <option value="O-">O-</option>
-                                    </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="address">Address</label>
-                                <input type="text" name="address" required>
-                            </div>
+            <c:choose>
+                <c:when test="${role == 'admin'}">
+                    <div class="input-group">
+                        <label for="commission">Commission</label>
+                        <input type="text" id="commission" name="commission" required>
+                    </div>
+                    <!-- Admin-specific hidden fields -->
+                    <input type="hidden" id="password" name="password" value="abc">
+                    <input type="hidden" id="confirm-password" name="confirm-password" value="abc">
+                </c:when>
+                <c:when test="${role == 'agent'}">
 
-                            <div class="input-group">
-                                <label for="Date of Birth">DOB</label>
-                                <input type="date" name="dob">
-                            </div>
-                             <c:choose>
-                                 <c:when test="${role != 'Admin' && role != 'Agent'}">
-                                    <div class="input-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" required>
-                                    </div>
-                                    <div class="input-group">
-                                    <label for="Confirm password">Confirm Password</label>
-                                    <input type="password" id="password" name="Confirm password" required>
-                                    </div>
-                                 </c:when>
-                                 <c:otherwise>
-                                    <c:if test="${role == 'Admin'}">
-                                                    <div class="input group">
-                                                        <label for="commission">Commission</label>
-                                                        <input type="text" id="commission" name="commission" required>
-                                                    </div>
-                                    </c:if>
-                                    <input type="hidden" id="password" name="password" value="abc" >
-                                     <input type="hidden" id="confirm-password" name="confirm-password" value="abc">
-                                 </c:otherwise>
-                             </c:choose>
-                            <button type="submit" class="btn">Sign Up</button>
+                                    <!-- Agent-specific hidden fields -->
+                                    <input type="hidden" id="password" name="password" value="abc">
+                                    <input type="hidden" id="confirm-password" name="confirm-password" value="abc">
+                                </c:when>
+                <c:otherwise>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
 </body>
 </html>
